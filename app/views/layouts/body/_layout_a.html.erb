@@ -1,0 +1,21 @@
+<style>
+  body {
+    background:linear-gradient(180deg,#d5e7f7 0%,#ffffff 20%);
+    background-repeat: repeat-x; 
+    background-position:top; 
+    background-attachment:fixed
+  }
+</style>
+<div class="ui-layout-a">
+  <div class="--main-container">   
+    <%= yield :left_menu %>
+    <%= yield %>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((block) => {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>

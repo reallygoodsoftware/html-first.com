@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+  <head>
+    <%= render :partial=> "shared/head" %>
+    <script src="https://static.heyflow.com/widget/latest/webview.js"></script>
+  </head>
+  <body class="relative h-full">
+    <%= render :partial => "shared/partial_containers" %>
+    <%= yield %>
+  </body>
+</html>

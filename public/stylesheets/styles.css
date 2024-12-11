@@ -1,0 +1,62 @@
+:root {
+  --color-gamma: #1e293b;
+  --color-beta: #5046e5;
+  --color-gamma-text: #fff;
+  --color-zeta: #cbd5e1;
+  --color-delta: #f471b5;
+  --color-epsilon: #7dd3fc;
+}
+
+#fixed-menu {
+  position: sticky;
+  top: 0;
+  margin-left: -220px;
+  max-width: 200px;
+  height: 0px;
+  overflow: visible;
+  a {
+    display: block;
+    color: black;
+    line-height: 20px;
+    margin-bottom: 7px;
+  }
+  ul a {
+    line-height: 15px;
+    margin-bottom: 10px;
+  }
+}
+
+.group-alpha {
+  .item {
+    transition: all .1s ease-in-out;
+  }
+  .item:hover {
+    transform: scale(1.05);
+    background-color: #f6f7f8;
+  }
+}
+
+.underlined-link {
+  position: relative;
+}
+
+.underlined-link:after {
+  height: 1px;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 0;
+  --tw-translate-y: 0.25rem;
+  content: var(--tw-content);
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transition-duration: .4s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.59,0,.06,1);
+  background-color: navy;
+}
+
+.underlined-link:hover:after,
+.underlined-link.active:after {
+  left: 0;
+  width: 100%;
+} 

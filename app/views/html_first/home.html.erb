@@ -1,0 +1,19 @@
+<% content_for :left_menu do %>
+  <%= render partial: "shared/html_first_left_menu" %>
+<% end %>
+<div class="ui-styled-text p-5">
+  <%= Utilities.markdown_file_to_html("readme_new.md").html_safe %>
+</div>
+<script>
+  // Whenever someone clicks on a .anchor-link link, get the href and scroll them to that div id
+  document.querySelectorAll('.anchor-link').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const href = link.getAttribute('href');
+      id = href.replace('/', '');
+      id = id.replace('#', '');
+      const element = document.getElementById(id);
+      element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    });
+  });
+</script>

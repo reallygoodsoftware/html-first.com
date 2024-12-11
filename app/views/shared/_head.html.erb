@@ -1,0 +1,36 @@
+<title><%= page_title %></title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="<%= page_description %>">
+<meta name="turbo-refresh-method" content="morph">
+<meta name="turbo-prefetch" content="false">
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<%= render "h1rails/vendor/tailwind_lite" %>
+<%= render "h1rails/vendor/base_styles" %>
+<%= render "h1rails/vendor/htmx" %>
+<%= render "h1rails/vendor/mini" %>
+
+<link rel="stylesheet" href="/vendor/tailwind-lite/1.0.2.css" >
+<link href="/base-styles/0.0.1.css<%= cache_buster %>" rel="stylesheet">
+<link href="/stylesheets/base-styles-overrides.css<%= cache_buster %>" rel="stylesheet">
+<link href="/stylesheets/styles.css<%= cache_buster %>" rel="stylesheet" >
+<script src="/js/custom.js<%= cache_buster %>"></script>
+<script src="/vendor/htmx/1.9.9.js" defer></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/tomorrow-night-blue.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/erb.min.js"></script>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<script async src="https://umami.toniclabshq.com/script.js" data-website-id="e0b4c39b-a89d-4f84-9465-096169b6295c"></script>
+<link  href="/vendor/highlight/tomorrow-night-blue.css" rel="stylesheet" media="screen" />

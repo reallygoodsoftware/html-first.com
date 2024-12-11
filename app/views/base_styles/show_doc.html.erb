@@ -1,0 +1,8 @@
+<% @file_path = "docs/base-styles/" %>
+<% @file_path += "#{params[:folder]}/" if params[:folder].present? %>
+<% @file_path += "#{params[:file]}.md" if params[:file].present? %>
+
+<%= render partial: "shared/base_styles_left_menu"  %>
+<div class="ui-styled-text ui-box mt-6 p-5">
+  <%= Utilities.markdown_to_html(File.read(@file_path)).html_safe %>
+</div>

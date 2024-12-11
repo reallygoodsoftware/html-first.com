@@ -1,0 +1,21 @@
+<div class="grid grid-cols-7 gap-4 mb-5" id="<%= dom_id(item_form) %>">
+  <div class="col-span-3">
+    <%= item_form.text_field :title, placeholder: "Title" %>
+  </div>
+  <div class="col-span-3">
+    <%= item_form.text_field :description, placeholder: "Description" %>
+  </div>
+  <div class="col-span-1">
+    <a href="<%= delete_category_path(item_form.object) %>" 
+      class="ui-button" 
+      hx-target="#<%= dom_id(item_form.object) %>" 
+      hx-select="#<%= dom_id(item_form.object) %>"
+      hx-swap="outerHTML"
+      hx-indicator="this">
+      <%= inline_svg_tag("heroicons/trash-outline.svg") %>
+      Delete
+      <%= inline_svg_tag("misc/spinner.svg",class:"shown-while-loading") %>
+    </a>
+  </div>
+</div>
+<%= item_form.hidden_field :id %>

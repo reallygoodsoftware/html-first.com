@@ -1,0 +1,17 @@
+
+<div class="sticky top-0 right-0 left-0 bg-white z-20" style="height:60px; box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1)">
+  <div class="flex justify-between h-full">
+    <div class="flex items-center px-2">
+      <%= image_tag active_site["logo_path"] %>
+    </div>
+    <div class="flex items-center">
+      <%- sites.each do |site| %>
+        <% active = site == active_site %>
+        <% is_local? ? domain = site["local"] : domain = site["domain"] %>
+        <a class="hover:bg-gray-100 flex h-full px-3 py-1 <%= 'bg-gray-100' if active %>" href="<%= protocol %><%= domain %>">
+          <%= image_tag site["logo_path"]+cache_buster, class: "my-3" %>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

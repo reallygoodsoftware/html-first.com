@@ -1,0 +1,69 @@
+
+<%= render partial: "shared/html_first_left_menu" %>
+
+<div class="ui-titlepair py-4">
+  <div class="--title">
+    <%= @page_title %>
+  </div>
+</div>
+
+<div class="ui-box">
+  <div class="flex flex-col gap-y-6 p-2">
+    <% @grouped = @resources.group_by{ |r| r.resource_kinds.map(&:name) } %>
+    <%- @grouped.each do |resource_kind,resources|  %>
+      <div class="ui-titlepair --sm">
+        <div class="--title">
+          <%= resource_kind.first.pluralize %>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-2 group-alpha gap-x-5 gap-y-5">
+        <%- resources.each do |resource| %>
+          <% is_person =  resource.resource_kinds.map(&:identifier).include?("person") %>
+          <% is_tweet =   resource.resource_kinds.map(&:identifier).include?("tweet") %>
+          <div class="item ui-box">
+            <div class="flex justify-between">
+              <div class="flex gap-x-2">
+                <% if is_person && resource.image.present? %>
+                  <img class="w-8 h-8 rounded-full" src="<%= url_for(resource.image) %>" />
+                <% end %>
+                <div class="font-bold text-xl">
+                  <%= resource.title %>
+                </div>
+              </div>
+              <div class="flex gap-x-1">
+                <% if is_person %>
+                  <% if resource.x_url.present? %>
+                    <a target="_blank" href="<%= resource.x_url %>" class="border-b border-blue-400 flex items-center gap-x-1 no-style" >
+                      <%= inline_svg_tag("heroicons/icon-twitter.svg",class:"w-4 h-4") %>
+                    </a>
+                  <% end %>
+                  <% if resource.url.present? %>
+                    <a target="_blank" href="<%= resource.url %>" class="border-b border-blue-400 flex items-center gap-x-1 no-style" >
+                      <%= inline_svg_tag("heroicons/link.svg",class:"w-4 h-4") %>
+                    </a>
+                  <% end %>
+                <% elsif resource.is_snippet? %>
+                  <a href="<%= snippet_path(resource.id) %>" class="border-b border-blue-400 flex items-center gap-x-1 no-style" >
+                    Link
+                    <%= inline_svg_tag("heroicons/icon-external-link.svg",class:"w-4 h-4") %>
+                  </a>
+                <% elsif is_tweet %>
+                <% else %>
+                  <a target="_blank" href="<%= resource.url %>" class="border-b border-blue-400 flex items-center gap-x-1 no-style" >
+                    Link
+                    <%= inline_svg_tag("heroicons/icon-external-link.svg",class:"w-4 h-4") %>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+            <div class="text-gray-500 text-base pt-3">
+              <%= resource.description %>
+            </div>
+          </div>
+        <% end %> 
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

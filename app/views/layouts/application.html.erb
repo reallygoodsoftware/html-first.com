@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+  <head>
+    <%= render :partial=> "shared/head" %>
+    <meta property="og:title" content="HTML First" />
+    <meta property="og:description" content="Build more maintainable software, faster" />
+    <meta property="og:url" content="https://html-first.com" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@tonyennis">
+    <meta name="twitter:title" content="HTML First">
+    <meta name="twitter:image" content="https://html-first.com/images/html-first.png">
+    <meta name="image" property="og:image" content="https://html-first.com/images/html-first.png" >
+  </head>
+  <body style="<%= yield :body_classes %>" <%= htmx_body_attributes.html_safe %> >
+    <%= render :partial=> "shared/partial_containers" %>
+    <% if !request_from_iframe? && ( is_local? || ( active_site && active_site["show_header"])  )  %>
+      <%= render partial: "shared/top_bar" %>
+    <% end %> 
+    <div id="main-content" class="h-full z-10" >
+      <% if use_bare_layout? %>
+        <%= yield %>
+      <% elsif @body_layout %> 
+        <%= render "layouts/body/#{@body_layout}" %>
+      <% else %>
+        <%= render "layouts/body/default" %>
+      <% end %>
+    </div>
+    <% if request_from_iframe? %>
+      <script>
+        function sendHeight() {
+          var height = document.body.scrollHeight;
+          window.parent.postMessage(height, '*');
+        }
+
+        // Send height when page loads
+        window.addEventListener('load', sendHeight);
+
+        // Send height when window resizes
+        window.addEventListener('resize', sendHeight);
+      </script>
+    <% end %>
+  </body>
+</html>

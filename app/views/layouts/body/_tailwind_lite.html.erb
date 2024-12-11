@@ -1,0 +1,44 @@
+
+<style type="text/css">
+  body {
+    height: calc(100% - 60px);
+    background-image: url('/images/color-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  #main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  a {
+    text-decoration: underline;
+    color: #5479FF;
+    font-weight: bold;
+  }
+  p {
+    margin-bottom: 20px;
+    line-height: 30px;
+  }
+  section button {
+    font-size: 20px;
+  }
+  section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 15px 0;
+  }
+  * {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  [data-lastpass-icon-root],
+  [data-lastpass-root] {
+    display: none !important;
+  }
+</style>
+<div style="padding-top: 80px">
+  <%= yield %>
+</div>

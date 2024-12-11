@@ -1,0 +1,41 @@
+<div class="--left-menu --narrow"> 
+  <a class="anchor-link mb-1" href="<%= html_first_root_path %>#intro">
+    <span class="underlined-link">
+      Intro
+    </span>
+  </a>
+  <a class="anchor-link mb-1" href="<%= html_first_root_path %>#guidelines">
+    <span class="underlined-link ">
+      Best Practices
+    </span>
+  </a>
+  
+  <a class="mb-1" href="<%= html_first_resources_path %>">
+    <span class="underlined-link <%= 'active' if current_page?(html_first_resources_path) && !params[:kind] %> ">
+      Directory
+    </span>
+  </a>
+  
+  <% if current_page?(html_first_resources_path) %>
+    <% kinds = ["newsletter","person", "list", "library","writing"] %>
+    <ul class="p-2">
+      <% kinds.each do |kind| %>
+        <a class="text-sm" href="<%= current_url_with(kind:kind) %>">
+          <span class="underlined-link <%= 'active' if params[:kind] == kind %>">
+            <%= kind.pluralize.titleize %> 
+          </span>
+        </a>
+        <% if kind == "library" && params[:kind] == "library" %>
+          <% library_tags = ["buildless","web components"] %>
+          <ul class="p-2 hidden">
+            <%- library_tags.each do |tag| %>
+              <a class="truncate text-sm" href="<%= current_url_with(tag:tag) %>">
+                <%= tag %> 
+              </a>
+            <% end %> 
+          </ul>
+        <% end %> 
+      <% end %>
+    </ul>
+    <% end %>
+</div>
