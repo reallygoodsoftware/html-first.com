@@ -1,12 +1,9 @@
-
 <%= render partial: "shared/html_first_left_menu" %>
-
 <div class="ui-titlepair py-4">
   <div class="--title">
     <%= @page_title %>
   </div>
 </div>
-
 <div class="ui-box">
   <div class="flex flex-col gap-y-6 p-2">
     <% @grouped = @resources.group_by{ |r| r.resource_kinds.map(&:name) } %>
@@ -42,11 +39,6 @@
                       <%= inline_svg_tag("heroicons/link.svg",class:"w-4 h-4") %>
                     </a>
                   <% end %>
-                <% elsif resource.is_snippet? %>
-                  <a href="<%= snippet_path(resource.id) %>" class="border-b border-blue-400 flex items-center gap-x-1 no-style" >
-                    Link
-                    <%= inline_svg_tag("heroicons/icon-external-link.svg",class:"w-4 h-4") %>
-                  </a>
                 <% elsif is_tweet %>
                 <% else %>
                   <a target="_blank" href="<%= resource.url %>" class="border-b border-blue-400 flex items-center gap-x-1 no-style" >
@@ -60,10 +52,8 @@
               <%= resource.description %>
             </div>
           </div>
-        <% end %> 
+        <% end %>
       </div>
     <% end %>
-
   </div>
-
 </div>
