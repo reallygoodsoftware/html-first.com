@@ -1,0 +1,23 @@
+
+<div class="flex justify-between items-center py-5">
+  <h1 class="text-3xl font-bold border-b-0 text-black">
+    <%= @page_title %>
+  </h1>
+  <div class="ui-tabnav --ares gap-x-3">
+    <div class="<%= 'active' if current_page?(root_path) %>">
+      <a class="anchor-link mb-1" href="<%= root_path %>#intro">
+        Intro
+      </a>
+    </div>
+    <div class="<%= 'active' if current_page?(guidelines_path) %>">
+      <a  href="<%= guidelines_path %>">
+        Best Practices
+      </a>
+    </div>
+    <div class="<%= 'active' if current_page?(resources_path) %>">
+      <a class="mb-1" href="<%= resources_path %>">
+        Directory
+      </a>
+    </div>
+  </div>
+</div>

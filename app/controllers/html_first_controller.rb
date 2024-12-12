@@ -1,6 +1,12 @@
 class HtmlFirstController < ApplicationController
 
   def home
+    @page_title = "About HTML First"
+    @body_layout = "layout_a"
+  end
+
+  def guidelines 
+    @page_title = "HTML First"
     @body_layout = "layout_a"
   end
 
@@ -15,7 +21,7 @@ class HtmlFirstController < ApplicationController
           .where("resource_kinds.identifier = ?", params[:kind])
       end
     else 
-      @page_title = "Resources"
+      @page_title = "Directory"
       @resources = Resource.all
     end
   end

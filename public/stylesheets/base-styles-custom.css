@@ -1,4 +1,3 @@
-
 :root {
   --ui-font-family: 'Plus Jakarta Sans', sans-serif;
   --ui-font-family-headers: 'Plus Jakarta Sans', sans-serif;
@@ -8,20 +7,25 @@
   .--main-container {
     margin: 0 auto;
     max-width: 800px;
+    padding: 0 15px;
   }
+
   .--left-menu {
+    display: none;
     position: relative;
     overflow: visible;
     max-height: 150px;
     overflow: scroll;
     width: 100%;
     padding: 20px;
+
     a {
       display: block;
       color: black;
       line-height: 20px;
       margin-bottom: 7px;
     }
+
     ul a {
       line-height: 15px;
       margin-bottom: 10px;
@@ -32,11 +36,13 @@
 @media only screen and (min-width: 800px) {
   .ui-layout-a {
     .--left-menu {
+      display: block;
       max-width: 200px;
       position: fixed;
       margin-left: -220px;
       top: 80px;
       max-height: 100000px;
+
       &.--narrow {
         margin-left: -150px;
         max-width: 130px;
@@ -62,7 +68,34 @@
   a.active {
     font-weight: bold;
   }
-  ul > li > ul > li > a:not(.active) + ul {
+
+  ul>li>ul>li>a:not(.active)+ul {
     display: none;
   }
+}
+
+.ui-tabnav {
+  &.--ares {
+    &>*.active {
+
+      button,
+      a {
+        background: rgba(255, 255, 255, 0.5);
+        color: #000;
+      }
+    }
+
+    &>*:not(.active) {
+
+      button:hover,
+      a:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+  }
+}
+
+.ui-styled-text h2 {
+  margin-top: 40px;
 }
